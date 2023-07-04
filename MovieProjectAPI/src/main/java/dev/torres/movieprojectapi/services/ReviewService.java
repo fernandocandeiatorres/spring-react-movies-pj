@@ -3,6 +3,7 @@ package dev.torres.movieprojectapi.services;
 import dev.torres.movieprojectapi.entities.Movie;
 import dev.torres.movieprojectapi.entities.Review;
 import dev.torres.movieprojectapi.repositories.ReviewRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -34,4 +35,10 @@ public class ReviewService {
 
         return review;
     }
+
+    public void deleteReview(String reviewId) {
+        ObjectId objReviewId = new ObjectId(reviewId);
+        reviewRepository.deleteById(objReviewId);
+    }
+
 }
